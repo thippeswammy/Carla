@@ -242,7 +242,7 @@ def main():
 
             # spawn the cars and set their autopilot and light state all together
             batch.append(SpawnActor(blueprint, transform)
-                .then(SetAutopilot(FutureActor, True, traffic_manager.get_port())))
+                         .then(SetAutopilot(FutureActor, True, traffic_manager.get_port())))
 
         for response in client.apply_batch_sync(batch, synchronous_master):
             if response.error:
@@ -260,8 +260,8 @@ def main():
         # Spawn Walkers
         # -------------
         # some settings
-        percentagePedestriansRunning = 0.0      # how many pedestrians will run
-        percentagePedestriansCrossing = 0.0     # how many pedestrians will walk through the road
+        percentagePedestriansRunning = 0.0  # how many pedestrians will run
+        percentagePedestriansCrossing = 0.0  # how many pedestrians will walk through the road
         if args.seedw:
             world.set_pedestrians_seed(args.seedw)
             random.seed(args.seedw)
@@ -334,7 +334,7 @@ def main():
             # set walk to random point
             all_actors[i].go_to_location(world.get_random_location_from_navigation())
             # max speed
-            all_actors[i].set_max_speed(float(walker_speed[int(i/2)]))
+            all_actors[i].set_max_speed(float(walker_speed[int(i / 2)]))
 
         print('spawned %d vehicles and %d walkers, press Ctrl+C to exit.' % (len(vehicles_list), len(walkers_list)))
 
